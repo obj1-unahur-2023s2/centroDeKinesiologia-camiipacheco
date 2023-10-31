@@ -1,0 +1,31 @@
+import aparatos.*
+import paciente.*
+import centro.*
+
+describe "test parte 2 "{
+	const mag1= new Magneto()
+	const bici1= new Bicicleta()
+	const biciLeo= new Bicicleta()
+    const magnetoLeo= new Magneto()
+    const minitrapLeo= new Minitramp()
+    const leonardo= new Paciente(edad=40, nivelDeDolor=10,nivelDeFortaleza=20) 
+	const milena= new Paciente(edad=3, nivelDeDolor=30,nivelDeFortaleza=50) 
+	
+	const rutinaLeonardo = [biciLeo,minitrapLeo,biciLeo,magnetoLeo]
+	const rutinaMilena = [mag1,bici1]
+	
+	method initialize() {
+		leonardo.asignarRutina(rutinaLeonardo)
+		milena.asignarRutina(rutinaMilena)
+	}
+	
+	test "leonardo puede hacer la rutina asignada" {
+		assert.that(leonardo.puedeRealizarRutina())
+	}
+	
+	test "leonardo hace la rutina y su nivel de dolor baja a 1.8" {
+		leonardo.realizarRutina()
+		assert.equals(1.8,leonardo.nivelDeDolor())
+	}
+	
+	}

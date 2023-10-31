@@ -1,0 +1,30 @@
+import aparatos.*
+import paciente.*
+import centro.*
+
+describe "test etapa 1 "{
+   const leonardo= new Paciente(edad=40, nivelDeDolor=10,nivelDeFortaleza=20) 
+   const milena= new Paciente(edad=3, nivelDeDolor=30,nivelDeFortaleza=50) 
+   const bici= new Bicicleta()
+   const magneto= new Magneto()
+   const minitrap= new Minitramp()
+
+   test "leonardo puede usar los tres aparatos creados" {
+    assert.that(leonardo.puedeUsar(bici))
+    assert.that(leonardo.puedeUsar(magneto))
+    assert.that(leonardo.puedeUsar(minitrap))
+   }
+   
+   test "milena solo puede usar magneto"{
+   	assert.notThat(milena.puedeUsar(bici))
+    assert.that(milena.puedeUsar(magneto))
+    assert.notThat(milena.puedeUsar(minitrap))
+   }
+   
+   test " dolor de leonardo baja a 9 "{
+   	  leonardo.usarAparato(magneto)
+   	  assert.equals (9,leonardo.nivelDeDolor())
+   }
+}
+
+
